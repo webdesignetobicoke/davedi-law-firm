@@ -3,6 +3,8 @@ import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ReviewList } from "@/components/ReviewList";
 import { ReviewForm } from "@/components/ReviewForm";
+import { GoogleReviewCard } from "@/components/GoogleReviewCard";
+import { googleReviews } from "@/lib/googleReviews";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -27,14 +29,25 @@ export default async function ReviewsPage(props: PageProps<"/reviews">) {
 
       <section className="py-24">
         <Container>
-          <SectionHeading eyebrow="Approved Reviews" title="Reviews From Our Clients" />
+          <SectionHeading eyebrow="Google Reviews" title="What Clients Are Saying on Google" />
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {googleReviews.map((review) => (
+              <GoogleReviewCard key={`${review.reviewerName}-${review.relativeTime}`} review={review} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-cream border-t border-line py-24">
+        <Container>
+          <SectionHeading eyebrow="Site Reviews" title="Reviews From Our Website" />
           <div className="mt-10">
             <ReviewList />
           </div>
         </Container>
       </section>
 
-      <section id="write-review" className="scroll-mt-28 bg-cream border-t border-line py-24">
+      <section id="write-review" className="scroll-mt-28 border-t border-line py-24">
         <Container className="max-w-2xl">
           <SectionHeading
             eyebrow="Share Your Experience"

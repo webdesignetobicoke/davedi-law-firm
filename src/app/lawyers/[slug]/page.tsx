@@ -69,6 +69,14 @@ export default async function LawyerProfilePage(props: PageProps<"/lawyers/[slug
                 </li>
               ))}
             </ul>
+
+            <div className="mt-14 border-t border-line pt-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Client Reviews</p>
+              <h3 className="mt-3 text-xl text-navy">What Clients Say About {lawyer.name.split(" ")[0]}</h3>
+              <div className="mt-6">
+                <ReviewList lawyerSlug={lawyer.slug} />
+              </div>
+            </div>
           </div>
 
           <div className="space-y-6">
@@ -90,15 +98,6 @@ export default async function LawyerProfilePage(props: PageProps<"/lawyers/[slug
             </aside>
 
             <ContactForm lawyerSlug={lawyer.slug} title={`Send ${lawyer.name.split(" ")[0]} a Message`} />
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-cream border-t border-line py-24">
-        <Container>
-          <SectionHeading eyebrow="Client Reviews" title={`Reviews for ${lawyer.name}`} />
-          <div className="mt-10">
-            <ReviewList lawyerSlug={lawyer.slug} />
           </div>
         </Container>
       </section>
