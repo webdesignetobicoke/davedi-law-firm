@@ -13,13 +13,7 @@ export function Footer() {
       <Container className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <Image
-              src="/images/logo-icon.png"
-              alt=""
-              width={741}
-              height={746}
-              className="h-14 w-14 brightness-0 invert"
-            />
+            <Image src="/images/logo-icon.png" alt="" width={741} height={746} className="h-14 w-14" />
             <span className="flex flex-col leading-none">
               <span className="text-lg font-semibold tracking-[0.12em] text-white">DAVEDI LAW</span>
               <span className="mt-1.5 text-[10px] font-medium tracking-[0.25em] text-white/60">

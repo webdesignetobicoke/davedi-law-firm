@@ -40,6 +40,9 @@ export default async function ReviewsPage(props: PageProps<"/reviews">) {
               </p>
             </div>
           )}
+          <Button href="/reviews#write-review" variant="primary" className="mt-8">
+            Write a Review
+          </Button>
         </Container>
       </section>
 
