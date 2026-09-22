@@ -41,9 +41,19 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
       <div className="bg-navy-deep text-white/80 text-xs">
         <Container className="flex flex-col items-center justify-center py-3 text-center sm:flex-row sm:justify-between sm:py-4 sm:text-left">
-          <a href={`tel:${site.phoneHref}`} className="hover:text-gold-light transition-colors">
-            Call us for a no-obligation chat: {site.phone}
-          </a>
+          <div className="flex flex-col items-center gap-x-3 gap-y-1 sm:flex-row sm:items-center">
+            <span>Call us for a no-obligation chat:</span>
+            <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+              {lawyers.map((lawyer, index) => (
+                <span key={lawyer.slug} className="flex items-center gap-3">
+                  {index > 0 && <span className="text-white/30">|</span>}
+                  <a href={`tel:${lawyer.phoneHref}`} className="hover:text-gold-light transition-colors">
+                    {lawyer.name.split(" ")[0]}: {lawyer.phone}
+                  </a>
+                </span>
+              ))}
+            </span>
+          </div>
           <div className="hidden items-center gap-4 sm:flex">
             <a href={`mailto:${site.email}`} className="hover:text-gold-light transition-colors">
               {site.email}
