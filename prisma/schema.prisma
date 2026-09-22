@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Review {
+  id            String       @id @default(cuid())
+  lawyerSlug    String
+  reviewerName  String
+  reviewerEmail String?
+  rating        Int
+  content       String
+  status        ReviewStatus @default(PENDING)
+  token         String       @unique @default(cuid())
+  createdAt     DateTime     @default(now())
+  decidedAt     DateTime?
+
+  @@index([lawyerSlug, status])
+}
