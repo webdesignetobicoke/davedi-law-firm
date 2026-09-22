@@ -62,28 +62,27 @@ export function ContactForm({ lawyerSlug, title }: { lawyerSlug?: string; title?
 
       {title && <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-navy">{title}</h3>}
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-navy">Your name</label>
-          <input
-            type="text"
-            name="name"
-            required
-            minLength={2}
-            maxLength={80}
-            className="w-full border border-line bg-cream px-4 py-3 text-sm text-ink focus:border-gold focus:outline-none"
-          />
-        </div>
-        <div>
-          <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-navy">Your email</label>
-          <input
-            type="email"
-            name="email"
-            required
-            maxLength={200}
-            className="w-full border border-line bg-cream px-4 py-3 text-sm text-ink focus:border-gold focus:outline-none"
-          />
-        </div>
+      <div>
+        <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-navy">Your name</label>
+        <input
+          type="text"
+          name="name"
+          required
+          minLength={2}
+          maxLength={80}
+          className="w-full border border-line bg-cream px-4 py-3 text-sm text-ink focus:border-gold focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-navy">Your email</label>
+        <input
+          type="email"
+          name="email"
+          required
+          maxLength={200}
+          className="w-full border border-line bg-cream px-4 py-3 text-sm text-ink focus:border-gold focus:outline-none"
+        />
       </div>
 
       <div>

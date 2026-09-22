@@ -1,6 +1,11 @@
 import { prisma } from "@/lib/prisma";
 import { getLawyer } from "@/lib/lawyers";
 import { StarRating } from "./StarRating";
+import { Button } from "./Button";
+
+function writeReviewHref(lawyerSlug?: string) {
+  return lawyerSlug ? `/reviews?lawyer=${lawyerSlug}#write-review` : "/reviews#write-review";
+}
 
 export async function ReviewList({ lawyerSlug }: { lawyerSlug?: string }) {
   let reviews: Awaited<ReturnType<typeof prisma.review.findMany>> = [];
@@ -12,17 +17,23 @@ export async function ReviewList({ lawyerSlug }: { lawyerSlug?: string }) {
     });
   } catch {
     return (
-      <p className="text-sm text-muted">
-        Reviews are temporarily unavailable.
-      </p>
+      <div className="border border-dashed border-line bg-white p-8 text-center">
+        <p className="text-sm text-muted">Reviews are temporarily unavailable.</p>
+        <Button href={writeReviewHref(lawyerSlug)} variant="primary" className="mt-5">
+          Write a Review
+        </Button>
+      </div>
     );
   }
 
   if (reviews.length === 0) {
     return (
-      <p className="text-sm text-muted">
-        No approved reviews yet — be the first to share your experience.
-      </p>
+      <div className="border border-dashed border-line bg-white p-8 text-center">
+        <p className="text-sm text-muted">No approved reviews yet — be the first to share your experience.</p>
+        <Button href={writeReviewHref(lawyerSlug)} variant="primary" className="mt-5">
+          Write a Review
+        </Button>
+      </div>
     );
   }
 

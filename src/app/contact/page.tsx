@@ -16,7 +16,6 @@ export default function ContactPage() {
     <>
       <section className="bg-navy-deep py-20 text-white">
         <Container>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">Get In Touch</p>
           <h1 className="text-4xl sm:text-5xl">Contact Us</h1>
           <p className="mt-4 max-w-xl text-white/70">{site.serviceArea}</p>
         </Container>
@@ -25,7 +24,7 @@ export default function ContactPage() {
       <section className="py-24">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
-            <SectionHeading eyebrow="Our Office" title="Mississauga, Ontario" />
+            <SectionHeading title="Mississauga, Ontario" />
             <ul className="mt-6 space-y-3 text-base text-muted">
               <li>{site.address.line1}</li>
               <li>{site.address.line2}</li>
@@ -65,20 +64,20 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <div className="h-72 w-full overflow-hidden border border-line">
+            <div id="contact-form" className="scroll-mt-28">
+              <SectionHeading title="We'll Get Back to You" />
+              <div className="mt-6">
+                <ContactForm />
+              </div>
+            </div>
+
+            <div className="mt-10 h-72 w-full overflow-hidden border border-line">
               <iframe
                 title="Office location map"
                 src="https://www.google.com/maps?q=7895+Tranmere+Drive,+Mississauga,+ON+L5S+1V9&output=embed"
                 className="h-full w-full"
                 loading="lazy"
               />
-            </div>
-
-            <div id="contact-form" className="mt-10 scroll-mt-28">
-              <SectionHeading eyebrow="Send Us a Message" title="We'll Get Back to You" />
-              <div className="mt-6">
-                <ContactForm />
-              </div>
             </div>
           </div>
         </Container>

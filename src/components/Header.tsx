@@ -6,7 +6,10 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import clsx from "clsx";
 import { Container } from "./Container";
+import { Button } from "./Button";
 import { site } from "@/lib/site";
+import { lawyers } from "@/lib/lawyers";
+import { practiceAreas } from "@/lib/services";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -17,6 +20,19 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+function getSubLinks(href: string): { href: string; label: string }[] | null {
+  if (href === "/lawyers") {
+    return lawyers.map((lawyer) => ({ href: `/lawyers/${lawyer.slug}`, label: lawyer.name }));
+  }
+  if (href === "/services") {
+    return practiceAreas.map((area) => ({ href: `/services/${area.slug}`, label: area.name }));
+  }
+  if (href === "/reviews") {
+    return [{ href: "/reviews#write-review", label: "Write a Review" }];
+  }
+  return null;
+}
+
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -24,7 +40,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
       <div className="bg-navy-deep text-white/80 text-xs">
-        <Container className="flex items-center justify-between py-2">
+        <Container className="flex flex-col items-center justify-center py-3 text-center sm:flex-row sm:justify-between sm:py-4 sm:text-left">
           <a href={`tel:${site.phoneHref}`} className="hover:text-gold-light transition-colors">
             Call us for a no-obligation chat: {site.phone}
           </a>
@@ -69,28 +85,54 @@ export function Header() {
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => {
             const active = pathname === link.href;
+            const subLinks = getSubLinks(link.href);
+
+            if (!subLinks) {
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={clsx(
+                    "text-sm font-semibold uppercase tracking-wide transition-colors",
+                    active ? "text-gold" : "text-navy hover:text-gold",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            }
+
             return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={clsx(
-                  "text-sm font-semibold uppercase tracking-wide transition-colors",
-                  active ? "text-gold" : "text-navy hover:text-gold",
-                )}
-              >
-                {link.label}
-              </Link>
+              <div key={link.href} className="group relative py-3">
+                <Link
+                  href={link.href}
+                  className={clsx(
+                    "text-sm font-semibold uppercase tracking-wide transition-colors",
+                    active ? "text-gold" : "text-navy hover:text-gold",
+                  )}
+                >
+                  {link.label}
+                </Link>
+                <div className="invisible absolute top-full left-1/2 z-50 w-56 -translate-x-1/2 border border-line bg-white opacity-0 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100">
+                  {subLinks.map((sub) => (
+                    <Link
+                      key={sub.href}
+                      href={sub.href}
+                      className="block px-4 py-3 text-sm font-semibold uppercase tracking-wide text-navy hover:bg-cream hover:text-gold"
+                    >
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             );
           })}
         </nav>
 
         <div className="hidden lg:block">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center bg-navy px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-gold hover:text-navy-deep"
-          >
+          <Button href="/contact" variant="primary">
             Contact Us
-          </Link>
+          </Button>
         </div>
 
         <button
@@ -108,14 +150,25 @@ export function Header() {
         <div className="border-t border-line bg-white lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="py-2 text-sm font-semibold uppercase tracking-wide text-navy hover:text-gold"
-              >
-                {link.label}
-              </Link>
+              <div key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-2 text-sm font-semibold uppercase tracking-wide text-navy hover:text-gold"
+                >
+                  {link.label}
+                </Link>
+                {getSubLinks(link.href)?.map((sub) => (
+                  <Link
+                    key={sub.href}
+                    href={sub.href}
+                    onClick={() => setOpen(false)}
+                    className="block py-2 pl-4 text-sm font-semibold uppercase tracking-wide text-muted hover:text-gold"
+                  >
+                    {sub.label}
+                  </Link>
+                ))}
+              </div>
             ))}
           </Container>
         </div>

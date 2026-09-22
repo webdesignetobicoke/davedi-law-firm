@@ -5,7 +5,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 
 export function LawyerCard({ lawyer }: { lawyer: Lawyer }) {
   return (
-    <div className="bg-white border border-line">
+    <div className="flex h-full flex-col bg-white border border-line">
       <Link href={`/lawyers/${lawyer.slug}`} className="block relative h-80 overflow-hidden bg-navy-deep/5">
         <Image
           src={lawyer.image}
@@ -15,7 +15,7 @@ export function LawyerCard({ lawyer }: { lawyer: Lawyer }) {
           className="object-contain"
         />
       </Link>
-      <div className="p-6">
+      <div className="flex flex-1 flex-col p-6">
         <h3 className="text-2xl text-navy">
           <Link href={`/lawyers/${lawyer.slug}`} className="hover:text-gold transition-colors">
             {lawyer.name}
@@ -23,7 +23,7 @@ export function LawyerCard({ lawyer }: { lawyer: Lawyer }) {
         </h3>
         <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-gold">{lawyer.title}</p>
         <p className="mt-4 text-sm leading-relaxed text-muted">{lawyer.bio[0]}</p>
-        <div className="mt-6 grid grid-cols-2 gap-3">
+        <div className="mt-auto grid grid-cols-2 gap-3 pt-6">
           <Link
             href={`/lawyers/${lawyer.slug}`}
             className="flex w-full items-center justify-center bg-navy px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-white transition-colors hover:bg-gold hover:text-navy-deep"

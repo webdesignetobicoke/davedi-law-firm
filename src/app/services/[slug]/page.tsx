@@ -73,7 +73,6 @@ export default async function PracticeAreaPage(props: PageProps<"/services/[slug
             <span>/</span>
             <span className="text-white">{area.name}</span>
           </nav>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">Practice Area</p>
           <h1 className="text-4xl sm:text-5xl">{area.name}</h1>
           <p className="mt-4 max-w-2xl text-white/70">{area.summary}</p>
           <div className="mt-8 flex flex-wrap gap-4">
@@ -102,11 +101,11 @@ export default async function PracticeAreaPage(props: PageProps<"/services/[slug
       <section className="py-24">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_320px]">
           <div>
-            <SectionHeading eyebrow="Our Approach" title={`How We Help With ${area.name}`} />
+            <SectionHeading title={`How We Help With ${area.name}`} />
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">{area.intro}</p>
 
             <div className="mt-14">
-              <SectionHeading eyebrow="What We Handle" title={`${area.name} Services`} />
+              <SectionHeading title={`${area.name} Services`} />
               <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {area.services.map((service) => (
                   <div
@@ -121,7 +120,7 @@ export default async function PracticeAreaPage(props: PageProps<"/services/[slug
             </div>
           </div>
 
-          <aside className="h-fit border border-line bg-white p-6">
+          <aside className="h-fit border border-line border-t-4 border-t-gold bg-white p-6 shadow-lg">
             <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-navy">Discuss Your Matter</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted">{site.serviceArea}</p>
             <ul className="mt-5 space-y-3 text-sm text-muted">
@@ -145,7 +144,7 @@ export default async function PracticeAreaPage(props: PageProps<"/services/[slug
 
       <section className="bg-navy-deep py-24 text-white">
         <Container>
-          <SectionHeading eyebrow="How It Works" title="Our Process" align="center" light />
+          <SectionHeading title="Our Process" align="center" light />
           <div className="relative mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <div className="pointer-events-none absolute top-6 right-0 left-0 hidden h-px bg-white/15 lg:block" />
             {area.process.map((step, i) => (
@@ -163,7 +162,7 @@ export default async function PracticeAreaPage(props: PageProps<"/services/[slug
 
       <section className="bg-cream border-t border-line py-24">
         <Container>
-          <SectionHeading eyebrow="Explore Further" title="Other Practice Areas" />
+          <SectionHeading title="Other Practice Areas" />
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {otherAreas.map((other) => (
               <div key={other.slug} className="group bg-white border border-line">

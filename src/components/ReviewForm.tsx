@@ -50,7 +50,7 @@ export function ReviewForm({ defaultLawyerSlug }: { defaultLawyerSlug?: string }
 
   if (status === "success") {
     return (
-      <div className="border border-gold bg-white p-8 text-center">
+      <div className="border border-line border-t-4 border-t-gold bg-white p-8 text-center shadow-lg">
         <p className="text-lg text-navy">Thank you — your review has been sent to the lawyer for approval.</p>
         <p className="mt-2 text-sm text-muted">
           Once approved, it will appear on our reviews page.
@@ -60,7 +60,10 @@ export function ReviewForm({ defaultLawyerSlug }: { defaultLawyerSlug?: string }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 bg-white border border-line p-6 sm:p-8">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-5 border border-line border-t-4 border-t-gold bg-white p-6 shadow-lg sm:p-8"
+    >
       <input type="text" name="company" className="hidden" tabIndex={-1} autoComplete="off" />
 
       <div>

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { Button } from "@/components/Button";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ReviewList } from "@/components/ReviewList";
 import { ContactForm } from "@/components/ContactForm";
@@ -39,9 +38,6 @@ export default async function LawyerProfilePage(props: PageProps<"/lawyers/[slug
             <Image src={lawyer.image} alt={lawyer.name} fill className="object-contain" />
           </div>
           <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">
-              {lawyer.focus.join(" · ")}
-            </p>
             <h1 className="text-4xl sm:text-5xl">{lawyer.name}</h1>
             <p className="mt-2 text-lg text-white/70">{lawyer.title}</p>
           </div>
@@ -51,7 +47,7 @@ export default async function LawyerProfilePage(props: PageProps<"/lawyers/[slug
       <section className="py-24">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_320px]">
           <div>
-            <SectionHeading eyebrow="Biography" title={`About ${lawyer.name.split(" ")[0]}`} />
+            <SectionHeading title={`About ${lawyer.name.split(" ")[0]}`} />
             <div className="mt-6 space-y-4">
               {lawyer.bio.map((paragraph, i) => (
                 <p key={i} className="text-base leading-relaxed text-muted">
@@ -71,8 +67,7 @@ export default async function LawyerProfilePage(props: PageProps<"/lawyers/[slug
             </ul>
 
             <div className="mt-14 border-t border-line pt-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Client Reviews</p>
-              <h3 className="mt-3 text-xl text-navy">What Clients Say About {lawyer.name.split(" ")[0]}</h3>
+              <h3 className="text-xl text-navy">What Clients Say About {lawyer.name.split(" ")[0]}</h3>
               <div className="mt-6">
                 <ReviewList lawyerSlug={lawyer.slug} />
               </div>
@@ -80,7 +75,7 @@ export default async function LawyerProfilePage(props: PageProps<"/lawyers/[slug
           </div>
 
           <div className="space-y-6">
-            <aside className="h-fit border border-line bg-white p-6">
+            <aside className="h-fit border border-line border-t-4 border-t-gold bg-white p-6 shadow-lg">
               <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-navy">Contact {lawyer.name.split(" ")[0]}</h3>
               <ul className="mt-4 space-y-3 text-sm text-muted">
                 <li>
@@ -92,9 +87,6 @@ export default async function LawyerProfilePage(props: PageProps<"/lawyers/[slug
                 {lawyer.fax && <li>Fax: {lawyer.fax}</li>}
               </ul>
               <WhatsAppButton href={lawyer.whatsapp} className="mt-6 w-full" />
-              <Button href={`/reviews?lawyer=${lawyer.slug}#write-review`} variant="primary" className="mt-3 w-full">
-                Write a Review
-              </Button>
             </aside>
 
             <ContactForm lawyerSlug={lawyer.slug} title={`Send ${lawyer.name.split(" ")[0]} a Message`} />

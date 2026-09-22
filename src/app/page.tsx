@@ -25,9 +25,6 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/80 to-navy-deep/40" />
         <Container className="relative py-32">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">
-            Mississauga, Ontario &mdash; Serving Clients Province-Wide
-          </p>
           <h1 className="max-w-3xl text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
             Taking Care of Your Legal Needs, Anywhere in Ontario.
           </h1>
@@ -45,7 +42,6 @@ export default function Home() {
       <section className="py-24">
         <Container>
           <SectionHeading
-            eyebrow="Our Business Sectors"
             title="How We Help"
             description="From individuals planning ahead to businesses navigating disputes, our practice covers the matters that matter most."
           />
@@ -81,7 +77,7 @@ export default function Home() {
             <Image src="/images/office-hero.jpg" alt="Davedi Law at work" fill className="object-cover" />
           </div>
           <div>
-            <SectionHeading eyebrow="Our Vision" title="Teamwork, Integrity and Service" light />
+            <SectionHeading title="Teamwork, Integrity and Service" light />
             <p className="mt-6 text-base leading-relaxed text-white/75">
               Our firm is committed to aiming for the highest standards possible. We aim not only to meet
               your expectations, but to exceed them, and to assist our clients in achieving their goals
@@ -101,7 +97,7 @@ export default function Home() {
 
       <section className="py-24">
         <Container>
-          <SectionHeading eyebrow="Our Team" title="Meet Our Lawyers" align="center" />
+          <SectionHeading title="Meet Our Lawyers" align="center" />
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mx-auto lg:max-w-3xl">
             {lawyers.map((lawyer) => (
               <LawyerCard key={lawyer.slug} lawyer={lawyer} />
@@ -112,7 +108,7 @@ export default function Home() {
 
       <section className="bg-cream py-24 border-t border-line">
         <Container>
-          <SectionHeading eyebrow="Client Reviews" title="What Our Clients Say" align="center" />
+          <SectionHeading title="What Our Clients Say" align="center" />
           <div className="mt-12">
             <ReviewList />
           </div>

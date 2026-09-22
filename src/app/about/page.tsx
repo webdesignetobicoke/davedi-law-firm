@@ -15,9 +15,6 @@ export default function AboutPage() {
     <>
       <section className="bg-navy-deep py-20 text-white">
         <Container>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">
-            Law Firm in Mississauga
-          </p>
           <h1 className="text-4xl sm:text-5xl">{site.legalName}</h1>
         </Container>
       </section>
@@ -28,7 +25,7 @@ export default function AboutPage() {
             <Image src="/images/hero-bg.jpg" alt="Davedi Law" fill className="object-cover" />
           </div>
           <div>
-            <SectionHeading eyebrow="Our Vision" title="Aiming for the Highest Standard" />
+            <SectionHeading title="Aiming for the Highest Standard" />
             <p className="mt-6 text-base leading-relaxed text-muted">
               Our firm is committed to aiming for the highest standards possible. We aim not only to
               meet your expectations, but to exceed them, and to assist our clients in achieving their
@@ -52,7 +49,7 @@ export default function AboutPage() {
 
       <section className="bg-navy py-20 text-white">
         <Container className="text-center">
-          <SectionHeading eyebrow="Where We Work" title="Proudly Serving All of Ontario" align="center" light />
+          <SectionHeading title="Proudly Serving All of Ontario" align="center" light />
           <p className="mx-auto mt-6 max-w-2xl text-white/75">
             While our office is based in Mississauga, we represent clients across Ontario — from the
             GTA to communities throughout the province — for real estate, immigration, wills &amp;

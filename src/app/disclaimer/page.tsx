@@ -20,7 +20,6 @@ export default function DisclaimerPage() {
     <>
       <section className="bg-navy-deep py-20 text-white">
         <Container>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">Legal</p>
           <h1 className="text-4xl sm:text-5xl">Disclaimer</h1>
         </Container>
       </section>
