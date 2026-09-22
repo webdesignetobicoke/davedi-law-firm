@@ -28,35 +28,29 @@ export default function ContactPage() {
             <ul className="mt-6 space-y-3 text-base text-muted">
               <li>{site.address.line1}</li>
               <li>{site.address.line2}</li>
-              <li>
-                <a href={`tel:${site.phoneHref}`} className="hover:text-gold transition-colors">
-                  Tel: {site.phone}
-                </a>
-              </li>
-              <li>Fax: {site.fax}</li>
-              <li>
-                <a href={`mailto:${site.email}`} className="hover:text-gold transition-colors">
-                  {site.email}
-                </a>
-              </li>
             </ul>
-            <WhatsAppButton href={site.whatsapp} className="mt-8" />
 
-            <div className="mt-12">
+            <div className="mt-10">
               <h3 className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">Speak Directly With</h3>
               <div className="space-y-4">
                 {lawyers.map((lawyer) => (
                   <div key={lawyer.slug} className="border border-line bg-white p-4">
                     <p className="text-base text-navy">{lawyer.name}</p>
                     <p className="text-xs font-semibold uppercase tracking-wide text-gold">{lawyer.title}</p>
-                    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
-                      <a href={`mailto:${lawyer.email}`} className="hover:text-gold transition-colors">
-                        {lawyer.email}
-                      </a>
-                      <a href={`tel:${lawyer.phoneHref}`} className="hover:text-gold transition-colors">
-                        Tel: {lawyer.phone}
-                      </a>
-                    </div>
+                    <ul className="mt-3 space-y-1 text-sm text-muted">
+                      <li>
+                        <a href={`tel:${lawyer.phoneHref}`} className="hover:text-gold transition-colors">
+                          Tel: {lawyer.phone}
+                        </a>
+                      </li>
+                      {lawyer.fax && <li>Fax: {lawyer.fax}</li>}
+                      <li>
+                        <a href={`mailto:${lawyer.email}`} className="hover:text-gold transition-colors">
+                          {lawyer.email}
+                        </a>
+                      </li>
+                    </ul>
+                    <WhatsAppButton href={lawyer.whatsapp} className="mt-4" />
                   </div>
                 ))}
               </div>

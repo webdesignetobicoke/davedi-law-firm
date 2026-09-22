@@ -65,14 +65,21 @@ export function Footer() {
           <ul className="space-y-2 text-sm">
             <li>{site.address.line1}</li>
             <li>{site.address.line2}</li>
-            <li>
-              <a href={`tel:${site.phoneHref}`} className="hover:text-white transition-colors">Tel: {site.phone}</a>
-            </li>
-            <li>Fax: {site.fax}</li>
-            <li>
-              <a href={`mailto:${site.email}`} className="hover:text-white transition-colors">{site.email}</a>
-            </li>
           </ul>
+          <div className="mt-5 space-y-4">
+            {lawyers.map((lawyer) => (
+              <ul key={lawyer.slug} className="space-y-1 text-sm">
+                <li className="font-semibold text-white">{lawyer.name}</li>
+                <li>
+                  <a href={`tel:${lawyer.phoneHref}`} className="hover:text-white transition-colors">Tel: {lawyer.phone}</a>
+                </li>
+                {lawyer.fax && <li>Fax: {lawyer.fax}</li>}
+                <li>
+                  <a href={`mailto:${lawyer.email}`} className="hover:text-white transition-colors">{lawyer.email}</a>
+                </li>
+              </ul>
+            ))}
+          </div>
           <div className="mt-4 flex gap-4">
             <a
               href={site.social.facebook}
