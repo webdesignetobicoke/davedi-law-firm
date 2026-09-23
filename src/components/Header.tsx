@@ -7,7 +7,6 @@ import { useState } from "react";
 import clsx from "clsx";
 import { Container } from "./Container";
 import { Button } from "./Button";
-import { site } from "@/lib/site";
 import { lawyers } from "@/lib/lawyers";
 import { practiceAreas } from "@/lib/services";
 
@@ -46,37 +45,16 @@ export function Header() {
             <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-medium">
               {lawyers.map((lawyer, index) => (
                 <span key={lawyer.slug} className="flex items-center gap-3">
-                  {index > 0 && <span className="text-white/30">|</span>}
+                  {index > 0 && <span className="hidden text-white/30 sm:inline">|</span>}
                   <a href={`tel:${lawyer.phoneHref}`} className="hover:text-gold-light transition-colors">
                     {lawyer.name.split(" ")[0]}: {lawyer.phone}
+                  </a>
+                  <a href={`mailto:${lawyer.email}`} className="text-gold-light hover:text-gold transition-colors">
+                    {lawyer.email}
                   </a>
                 </span>
               ))}
             </span>
-          </div>
-          <div className="hidden items-center gap-4 sm:flex">
-            <a href={`mailto:${site.email}`} className="hover:text-gold-light transition-colors">
-              {site.email}
-            </a>
-            <span className="text-white/30">|</span>
-            <a
-              href={site.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gold-light transition-colors"
-              aria-label="Facebook"
-            >
-              Facebook
-            </a>
-            <a
-              href={site.social.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gold-light transition-colors"
-              aria-label="Twitter"
-            >
-              Twitter
-            </a>
           </div>
         </Container>
       </div>
