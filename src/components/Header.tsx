@@ -41,15 +41,16 @@ export function Header() {
       <div className="bg-navy-deep text-white/80 text-xs">
         <Container className="flex flex-col items-center justify-center py-3 text-center sm:flex-row sm:justify-between sm:py-4 sm:text-left">
           <div className="flex flex-col items-center gap-x-3 gap-y-1 text-xs sm:flex-row sm:items-center sm:text-[13px]">
-            <span>Call us for a no-obligation chat:</span>
-            <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+            <span className="hidden sm:inline">Call us for a no-obligation chat:</span>
+            <span className="flex flex-col items-center gap-x-3 gap-y-1 sm:flex-row sm:flex-wrap sm:justify-center">
               {lawyers.map((lawyer, index) => (
-                <span key={lawyer.slug} className="flex items-center gap-3">
+                <span key={lawyer.slug} className="flex items-center gap-2 sm:gap-3">
                   {index > 0 && <span className="hidden text-white/30 sm:inline">|</span>}
-                  <a href={`tel:${lawyer.phoneHref}`} className="hover:text-gold-light transition-colors">
+                  <a href={`tel:${lawyer.phoneHref}`} className="whitespace-nowrap hover:text-gold-light transition-colors">
                     {lawyer.name.split(" ")[0]}: {lawyer.phone}
                   </a>
-                  <a href={`mailto:${lawyer.email}`} className="text-gold-light hover:text-gold transition-colors">
+                  <span className="text-white/30">&middot;</span>
+                  <a href={`mailto:${lawyer.email}`} className="whitespace-nowrap text-gold-light hover:text-gold transition-colors">
                     {lawyer.email}
                   </a>
                 </span>
