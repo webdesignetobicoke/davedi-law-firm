@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-navy-deep py-20 text-white">
+      <section className="bg-navy-deep py-24 text-white sm:py-28">
         <Container>
           <h1 className="text-4xl sm:text-5xl">Contact Us</h1>
           <p className="mt-4 max-w-xl text-white/70">{site.serviceArea}</p>
@@ -50,7 +50,7 @@ export default function ContactPage() {
                         </a>
                       </li>
                     </ul>
-                    <WhatsAppButton href={lawyer.whatsapp} className="mt-4" />
+                    <WhatsAppButton href={lawyer.whatsapp} className="mt-4 w-full" />
                   </div>
                 ))}
               </div>
